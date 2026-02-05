@@ -4,7 +4,8 @@
 **Matrícula:** 2024-2295  
 **Asignatura:** Seguridad en Redes  
 **Fecha:** Febrero 2026
-Link del video: https://youtu.be/s6Emg7BInSg
+
+**Link del video**: https://youtu.be/s6Emg7BInSg
 
 
 ---
