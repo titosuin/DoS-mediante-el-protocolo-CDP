@@ -25,16 +25,11 @@ El laboratorio se ha desplegado en un entorno virtualizado utilizando **GNS3**, 
     * **Víctima:** PC1 / VPCS (IP asignada por DHCP: `10.22.95.3`).
 
 <img width="641" height="712" alt="image" src="https://github.com/user-attachments/assets/07ad4a81-ae2d-4e63-ad94-2061a26abefb" />
-
-Dispositivo,Interfaz,Dirección IP,Máscara de Subred,Gateway Predeterminado:
-
-RouterGateway,e0/0.2295,10.22.95.1,255.255.255.0 (/24),N/A
-
-Switch L2,VLAN 2295,10.22.95.2 (Gestión),255.255.255.0 (/24),10.22.95.1
-
-Kali Linux (Atacante),eth0,10.22.95.4/255.255.255.0 (/24),10.22.95.1
-
-PC1 (Víctima),eth0, 10.22.95.3/255.255.255.0 (/24),10.22.95.1
+Dispositivo	Interfaz	Dirección IP	Máscara de Subred	Gateway Predeterminado
+Router Gateway	e0/0.2295	10.22.95.1	255.255.255.0 (/24)	N/A
+Switch L2	VLAN 2295	10.22.95.2 (Gestión)	255.255.255.0 (/24)	10.22.95.1
+Kali Linux (Atacante)	eth0	10.22.95.4	255.255.255.0 (/24)	10.22.95.1
+PC1 (Víctima)	eth0	DHCP (ej. 10.22.95.10)	255.255.255.0 (/24)	10.22.95.1
 
 ---
 
