@@ -10,7 +10,7 @@
 
 ---
 
-## 1. Descripción y Topología del Escenario
+ Descripción y Topología del Escenario
 
 El laboratorio se ha desplegado en un entorno virtualizado utilizando **GNS3**, simulando una infraestructura de red corporativa vulnerada desde el interior.
 
@@ -29,12 +29,12 @@ El laboratorio se ha desplegado en un entorno virtualizado utilizando **GNS3**, 
  Dispositivo   | Interfaz	|Dirección IP         |	Máscara de Subred 	|Gateway Predeterminado
  Router        | Gateway	|e0/0.2295	10.22.95.1|	255.255.255.0 (/24)	|N/A
  Switch L2	   | VLAN 2295	| 10.22.95.2 (Gestión)|	255.255.255.0 (/24)	|10.22.95.1
- Kali Linux    | Atacante  |	eth0	10.22.95.4	 |255.255.255.0 (/24)	|10.22.95.1
- PC1 (Víctima) |eth0 DHCP  |(ej. 10.22.95.10)	 |255.255.255.0 (/24)	|10.22.95.1
+ Kali Linux    | Atacante  |	10.22.95.4	       |255.255.255.0 (/24)	|10.22.95.1
+ PC1 (Víctima) |eth0 DHCP  | 10.22.95.3	       |255.255.255.0 (/24)	|10.22.95.1
 
 ---
 
-## 2. Requisitos Previos y Herramientas
+ Requisitos Previos y Herramientas
 
 Para la ejecución exitosa de estos scripts, se requiere el siguiente entorno:
 
@@ -45,7 +45,7 @@ Para la ejecución exitosa de estos scripts, se requiere el siguiente entorno:
 
 ---
 
-## 3. Ataque : DoS mediante Inundación CDP (CDP Flood)
+ Ataque : DoS mediante Inundación CDP (CDP Flood)
 
 ### Objetivo del Script
 El script `ataque_cdp2.py` tiene como objetivo saturar la tabla de vecinos CDP (Cisco Discovery Protocol) del switch objetivo, provocando una Denegación de Servicio en la capacidad de administración del equipo.
@@ -71,7 +71,7 @@ Debido a que los equipos Cisco descartan paquetes CDP mal formados, este script 
 
 ---
 
-5. Medidas de Mitigación
+Medidas de Mitigación
 Para proteger la infraestructura contra estos vectores de ataque, se recomiendan las siguientes configuraciones de endurecimiento (Hardening):
 
 Contra CDP Flood
