@@ -52,7 +52,7 @@ Para la ejecución exitosa de estos scripts, se requiere el siguiente entorno:
 ## 3. Ataque : DoS mediante Inundación CDP (CDP Flood)
 
 ### Objetivo del Script
-El script `ataque_cdp.py` tiene como objetivo saturar la tabla de vecinos CDP (Cisco Discovery Protocol) del switch objetivo, provocando una Denegación de Servicio en la capacidad de administración del equipo.
+El script `ataque_cdp2.py` tiene como objetivo saturar la tabla de vecinos CDP (Cisco Discovery Protocol) del switch objetivo, provocando una Denegación de Servicio en la capacidad de administración del equipo.
 
 Debido a que los equipos Cisco descartan paquetes CDP mal formados, este script fue desarrollado utilizando **inyección de paquetes RAW**, construyendo manualmente la cabecera del protocolo y calculando el **Checksum (RFC 1071)** matemáticamente para evadir los filtros de integridad del switch.
 
@@ -66,13 +66,24 @@ Debido a que los equipos Cisco descartan paquetes CDP mal formados, este script 
 
 ### Evidencia de Ejecución
 
-<img width="1257" height="472" alt="image" src="https://github.com/user-attachments/assets/fd4fd5ae-0a76-476b-b713-4b905302afe1" />
+<img width="520" height="106" alt="image" src="https://github.com/user-attachments/assets/cb6811b3-39d8-4bfd-a7bb-124bde2fd8a0" />
+
 
 
 <img width="658" height="388" alt="image" src="https://github.com/user-attachments/assets/48b78c10-5d50-435d-95a7-0f3d5dbc086b" />
 
 
 ---
+
+5. Medidas de Mitigación
+Para proteger la infraestructura contra estos vectores de ataque, se recomiendan las siguientes configuraciones de endurecimiento (Hardening):
+
+Contra CDP Flood
+Deshabilitar CDP: En todas las interfaces que conectan a usuarios finales o zonas no confiables.
+```bash
+Switch(config-if)# no cdp run
+```
+Control de Versión: Utilizar CDPv2 con autenticación (si es soportado) o migrar a LLDP con medidas de seguridad.
 
 
   
